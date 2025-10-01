@@ -10,7 +10,7 @@ int lives = 10;
 
 
 // --helper 
-bool[] guesses = new bool['z'-'a']; // false -> has not been guessed
+bool[] guesses = new bool['z'-'a'+1]; // false -> has not been guessed
 
 
 
