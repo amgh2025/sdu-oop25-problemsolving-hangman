@@ -1,13 +1,15 @@
 ﻿// See https://aka.ms/new-console-template for more information
+
+// --init
 string secret="hydrochlorid";
 
-Console.WriteLine(secret);
+
 
 
 // --helper 
 bool[] guesses = new bool['z'-'a']; // false -> has not been guessed
 
-// helpers
+
 
 int char2int (char c) {
   return c-'a';
@@ -30,7 +32,7 @@ void print_status () {
 
 
 
-
+// --main
 
 
 while (true) {
@@ -42,6 +44,12 @@ while (true) {
     continue;
   }
   char c = Char.ToLower(input[0]);
+  
+   if (c<'a' || c>'z') {
+    Console.WriteLine("Only letters acceptable");
+    continue;
+  }
+  
   Console.WriteLine(c);
   guesses[char2int(c)]=true;
 
