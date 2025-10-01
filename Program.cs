@@ -20,7 +20,8 @@ char int2char (int i) {
 }
 
 void print_status () {
-  // guesses
+
+ // guesses
   Console.Write("Guesses: ");
   for (int i=0 ; i<guesses.Length ; i++) {
     if (guesses[i]) {
@@ -28,6 +29,17 @@ void print_status () {
     }
   }
   Console.WriteLine("");
+
+
+  // secret
+  Console.Write("Word: ");
+  for (int i=0 ; i<secret.Length ; i++) {
+    char c = secret[i];
+    Console.Write(( guesses[char2int(c)] ? c : '*'));
+  }
+  Console.WriteLine("");
+  
+
 }
 
 
