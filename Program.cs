@@ -3,6 +3,9 @@
 // --init
 string secret="hydrochlorid";
 
+int lives = 10;
+
+
 
 
 
@@ -39,8 +42,29 @@ void print_status () {
   }
   Console.WriteLine("");
   
+  // lives left
+  Console.WriteLine(lives+" lives left");
+
+  
 
 }
+
+// check the secret lenght
+bool done () {
+  for (int i=0 ; i<secret.Length ; i++) {
+    char c = secret[i];
+    if (!guesses[char2int(c)]) return false;
+  }
+  return true;
+}
+
+bool guess_in_secret (int guess) {
+  foreach (char c in secret) {
+    if (char2int(c) == guess) return true;
+  }
+  return false;
+}
+
 
 
 
@@ -63,6 +87,19 @@ while (true) {
   }
   
   Console.WriteLine(c);
-  guesses[char2int(c)]=true;
+  //guesses[char2int(c)]=true;
+  int guess = char2int(c);
+  if (guesses[guess]==false && !guess_in_secret(guess)) lives--;
+  guesses[guess] = true;
+  
+  if (done()) {
+    Console.WriteLine("Yay!");
+    break;
+  }
+  
+  if (lives==0) {
+    Console.WriteLine("Oh nooo!!!");
+    break;
+  }
 
 }
